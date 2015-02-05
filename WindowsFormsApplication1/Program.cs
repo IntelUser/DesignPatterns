@@ -9,6 +9,7 @@ namespace Given
 {
     static class Program
     {
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -19,25 +20,50 @@ namespace Given
             Application.SetCompatibleTextRenderingDefault(false);
             
 
-            Photo photo;
-            TaggedPhoto foodTaggedPhoto, colorTaggedPhoto, tag;
-            BorderedPhoto composition;
+            ChristmasTree tree;
+            BalledTree ball;
+            ToppedTree top;
 
-            // Compose a photo with two TaggedPhotos and a blue BorderedPhoto
-            photo = new Photo();
-            Application.Run(photo);
-            foodTaggedPhoto = new TaggedPhoto(photo, "Food");
-            colorTaggedPhoto = new TaggedPhoto(foodTaggedPhoto, "Yellow");
-            composition = new BorderedPhoto(colorTaggedPhoto, Color.Blue);
-            Application.Run(composition);
-            Console.WriteLine(colorTaggedPhoto.ListTaggedPhotos());
+            List<BalledTree> treesWithBalls = new List<BalledTree>();
 
-            // Compose a photo with one TaggedPhoto and a yellow BorderedPhoto
-            photo = new Photo();
-            tag = new TaggedPhoto(photo, "Jug");
-            composition = new BorderedPhoto(tag, Color.Yellow);
-            Application.Run(composition);
-            Console.WriteLine(tag.ListTaggedPhotos());
+            
+            tree = new ChristmasTree();
+            Application.Run(tree);
+
+            ball = new BalledTree(tree);
+            treesWithBalls.Add(ball);
+            Application.Run(ball);
+            
+            DialogResult t = MessageBox.Show("Ok for new ball, cancel resume", "   ", MessageBoxButtons.OKCancel);
+            while (t == DialogResult.OK)
+            {
+                switch (t)
+                {
+
+                    case DialogResult.OK:
+                        treesWithBalls.Add(new BalledTree(treesWithBalls.ElementAt(treesWithBalls.Count - 1)));
+                        Application.Run(treesWithBalls.ElementAt(treesWithBalls.Count - 1));
+                         t = MessageBox.Show("Ok for new ball, press cancel to position topper.", "   ", MessageBoxButtons.OKCancel);
+
+                        break;
+                    case DialogResult.Cancel:
+
+                        break;
+                    default:
+                        break;
+                }
+            }
+            top = new ToppedTree(treesWithBalls.ElementAt(treesWithBalls.Count - 1));
+            Application.Run(top);
+            try
+            {
+                Application.Run(tree);
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

@@ -44,7 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BorderedPhoto.cs">
+    <Compile Include="BalledTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mouse.cs" />
+    <Compile Include="ToppedTree.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.cs">
@@ -53,7 +57,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Photo.cs">
+    <Compile Include="ChristmasTree.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -61,6 +65,12 @@
     <Compile Include="TaggedPhoto.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="BalledTree.resx">
+      <DependentUpon>BalledTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChristmasTree.resx">
+      <DependentUpon>ChristmasTree.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -71,6 +81,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ToppedTree.resx">
+      <DependentUpon>ToppedTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
