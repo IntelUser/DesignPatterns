@@ -9,32 +9,21 @@ namespace Given
 {
     static class Program
     {
-        
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-
-            ChristmasTree tree;
-            BalledTree ball;
-            ToppedTree top;
-
-            List<BalledTree> treesWithBalls = new List<BalledTree>();
-
-            
-            tree = new ChristmasTree();
+            var treesWithBalls = new List<BalledTree>();
+            var tree = new ChristmasTree();
             Application.Run(tree);
 
-            ball = new BalledTree(tree);
+            var ball = new BalledTree(tree);
             treesWithBalls.Add(ball);
             Application.Run(ball);
             
-            DialogResult t = MessageBox.Show("Ok for new ball, cancel resume", "   ", MessageBoxButtons.OKCancel);
+            var t = MessageBox.Show(@"Ok for new ball, cancel resume", @"   ", MessageBoxButtons.OKCancel);
             while (t == DialogResult.OK)
             {
                 switch (t)
@@ -43,7 +32,7 @@ namespace Given
                     case DialogResult.OK:
                         treesWithBalls.Add(new BalledTree(treesWithBalls.ElementAt(treesWithBalls.Count - 1)));
                         Application.Run(treesWithBalls.ElementAt(treesWithBalls.Count - 1));
-                         t = MessageBox.Show("Ok for new ball, press cancel to position topper.", "   ", MessageBoxButtons.OKCancel);
+                         t = MessageBox.Show(@"Ok for new ball, press cancel to position topper.", @"   ", MessageBoxButtons.OKCancel);
 
                         break;
                     case DialogResult.Cancel:
@@ -53,7 +42,7 @@ namespace Given
                         break;
                 }
             }
-            top = new ToppedTree(treesWithBalls.ElementAt(treesWithBalls.Count - 1));
+            var top = new ToppedTree(treesWithBalls.ElementAt(treesWithBalls.Count - 1));
             Application.Run(top);
             try
             {

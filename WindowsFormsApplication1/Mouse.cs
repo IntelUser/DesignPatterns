@@ -8,6 +8,6 @@ namespace Given
 {
     public static class Mouse
     {
-        public static int x = 0, y = 0;
+        public static int X = 0, Y = 0;
     }
 }
